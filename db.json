@@ -1,0 +1,76 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Alice Admin",
+      "email": "admin@riwiflow.com",
+      "password": "admin123",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "name": "Carlos Coder",
+      "email": "coder@riwiflow.com",
+      "password": "coder123",
+      "role": "coder"
+    }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "title": "User Flow Mapping",
+      "description": "Define the end-to-end journey for the new onboarding experience.",
+      "status": "todo",
+      "userId": 2
+    },
+    {
+      "id": 2,
+      "title": "Social Media Assets",
+      "description": "Prepare Q3 promotional graphics for LinkedIn and Twitter.",
+      "status": "todo",
+      "userId": 1
+    },
+    {
+      "id": 3,
+      "title": "API Documentation",
+      "description": "Updating the public API docs for the v2.4 release next week.",
+      "status": "in-progress",
+      "userId": 1
+    },
+    {
+      "id": 4,
+      "title": "Competitor Analysis",
+      "description": "Reviewing the workflow engines of Top 3 competitors.",
+      "status": "in-progress",
+      "userId": 2
+    },
+    {
+      "id": 5,
+      "title": "Pricing Tier Update",
+      "description": "Final sign-off required for the Enterprise plan structural changes.",
+      "status": "in-review",
+      "userId": 2
+    },
+    {
+      "id": 6,
+      "title": "Privacy Policy v2",
+      "description": "Review GDPR compliance updates for the European expansion.",
+      "status": "in-review",
+      "userId": 1
+    },
+    {
+      "id": 8,
+      "title": "Style Guide v1",
+      "description": "Baseline UI tokens and shared components library established.",
+      "status": "done",
+      "userId": 2
+    },
+    {
+      "title": "Pa saber",
+      "description": "esto solo es una demo",
+      "status": "in-progress",
+      "userId": 2,
+      "id": 9
+    }
+  ]
+}
