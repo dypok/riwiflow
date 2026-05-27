@@ -20,7 +20,7 @@
       "id": 1,
       "title": "User Flow Mapping",
       "description": "Define the end-to-end journey for the new onboarding experience.",
-      "status": "in-review",
+      "status": "in-progress",
       "userId": 2
     },
     {
@@ -48,7 +48,7 @@
       "id": 5,
       "title": "Pricing Tier Update",
       "description": "Final sign-off required for the Enterprise plan structural changes.",
-      "status": "in-review",
+      "status": "todo",
       "userId": 2
     },
     {

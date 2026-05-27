@@ -100,10 +100,13 @@
 
 
     <!-- VIEW: BOARD -->
-    <div id="view-board" class="hidden bg-background text-on-background overflow-hidden h-screen flex">
+    <div id="view-board" class="hidden bg-background text-on-background overflow-hidden h-screen flex relative">
+
+      <!-- Mobile overlay -->
+      <div id="mobile-overlay" class="hidden fixed inset-0 z-40 bg-black/40"></div>
 
       <!-- SideNavBar -->
-      <aside class="hidden md:flex flex-col pt-md pb-xl gap-xs h-full bg-surface-container-low border-r border-outline-variant w-[280px] shrink-0">
+      <aside id="sidebar" class="hidden md:flex flex-col pt-md pb-xl gap-xs h-full bg-surface-container-low border-r border-outline-variant w-[220px] shrink-0">
         <div class="px-gutter mb-xl">
           <h1 class="font-headline-md text-headline-md font-bold text-primary">Riwiflow</h1>
           <p class="font-body-sm text-body-sm text-on-surface-variant">Product Team</p>
@@ -148,11 +151,12 @@
         </div>
       </aside>
 
-      <main class="flex-1 flex flex-col min-w-0">
+      <main class="flex-1 flex flex-col min-w-0 overflow-hidden">
         <!-- TopAppBar -->
         <header class="flex justify-between items-center h-16 px-gutter w-full bg-surface border-b border-outline-variant z-40">
-          <div class="flex items-center gap-4 flex-1">
-            <div class="relative max-w-md w-full">
+          <div class="flex items-center gap-2 flex-1 min-w-0">
+            <button id="btn-menu" class="md:hidden material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full transition-colors shrink-0">menu</button>
+            <div class="relative max-w-md w-full min-w-0">
               <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
               <input
                 id="search-input"
@@ -174,58 +178,56 @@
         </header>
 
         <!-- Kanban Content -->
-        <div class="flex-1 overflow-x-auto p-gutter custom-scrollbar">
-          <div class="flex gap-gutter h-full">
+        <div class="flex-1 flex gap-gutter p-gutter min-h-0 overflow-hidden">
 
-            <!-- Column: To Do -->
-            <div class="kanban-column flex flex-col w-1/4 h-full">
-              <div class="flex items-center justify-between mb-md">
-                <div class="flex items-center gap-2">
-                  <h3 class="font-title-sm text-title-sm text-on-surface">To Do</h3>
-                  <span id="count-todo" class="bg-surface-container-high text-on-surface-variant px-2 py-0.5 rounded-full font-label-sm text-label-sm">0</span>
-                </div>
-                <button class="material-symbols-outlined text-outline">more_horiz</button>
+          <!-- Column: To Do -->
+          <div class="flex-1 flex flex-col min-w-0">
+            <div class="shrink-0 flex items-center justify-between mb-md">
+              <div class="flex items-center gap-2">
+                <h3 class="font-title-sm text-title-sm text-on-surface">To Do</h3>
+                <span id="count-todo" class="bg-surface-container-high text-on-surface-variant px-2 py-0.5 rounded-full font-label-sm text-label-sm">0</span>
               </div>
-              <div id="col-todo" class="flex-1 space-y-md p-2 bg-surface-container-low/50 rounded-xl overflow-y-auto custom-scrollbar"></div>
+              <button class="material-symbols-outlined text-outline">more_horiz</button>
             </div>
-
-            <!-- Column: In Progress -->
-            <div class="kanban-column flex flex-col w-1/4 h-full">
-              <div class="flex items-center justify-between mb-md">
-                <div class="flex items-center gap-2">
-                  <h3 class="font-title-sm text-title-sm text-on-surface">In Progress</h3>
-                  <span id="count-in-progress" class="bg-primary-container text-on-primary px-2 py-0.5 rounded-full font-label-sm text-label-sm">0</span>
-                </div>
-                <button class="material-symbols-outlined text-outline">more_horiz</button>
-              </div>
-              <div id="col-in-progress" class="flex-1 space-y-md p-2 bg-surface-container-low/50 rounded-xl overflow-y-auto custom-scrollbar"></div>
-            </div>
-
-            <!-- Column: In Review -->
-            <div class="kanban-column flex flex-col w-1/4 h-full">
-              <div class="flex items-center justify-between mb-md">
-                <div class="flex items-center gap-2">
-                  <h3 class="font-title-sm text-title-sm text-on-surface">In Review</h3>
-                  <span id="count-in-review" class="bg-surface-container-high text-on-surface-variant px-2 py-0.5 rounded-full font-label-sm text-label-sm">0</span>
-                </div>
-                <button class="material-symbols-outlined text-outline">more_horiz</button>
-              </div>
-              <div id="col-in-review" class="flex-1 space-y-md p-2 bg-surface-container-low/50 rounded-xl overflow-y-auto custom-scrollbar"></div>
-            </div>
-
-            <!-- Column: Done -->
-            <div class="kanban-column flex flex-col w-1/4 h-full">
-              <div class="flex items-center justify-between mb-md">
-                <div class="flex items-center gap-2">
-                  <h3 class="font-title-sm text-title-sm text-on-surface">Done</h3>
-                  <span id="count-done" class="bg-surface-container-high text-on-surface-variant px-2 py-0.5 rounded-full font-label-sm text-label-sm">0</span>
-                </div>
-                <button class="material-symbols-outlined text-outline">more_horiz</button>
-              </div>
-              <div id="col-done" class="flex-1 space-y-md p-2 bg-surface-container-low/50 rounded-xl overflow-y-auto custom-scrollbar"></div>
-            </div>
-
+            <div id="col-todo" class="flex-1 min-h-0 space-y-md p-2 bg-surface-container-low/50 rounded-xl overflow-y-auto overflow-x-hidden custom-scrollbar"></div>
           </div>
+
+          <!-- Column: In Progress -->
+          <div class="flex-1 flex flex-col min-w-0">
+            <div class="shrink-0 flex items-center justify-between mb-md">
+              <div class="flex items-center gap-2">
+                <h3 class="font-title-sm text-title-sm text-on-surface">In Progress</h3>
+                <span id="count-in-progress" class="bg-primary-container text-on-primary px-2 py-0.5 rounded-full font-label-sm text-label-sm">0</span>
+              </div>
+              <button class="material-symbols-outlined text-outline">more_horiz</button>
+            </div>
+            <div id="col-in-progress" class="flex-1 min-h-0 space-y-md p-2 bg-surface-container-low/50 rounded-xl overflow-y-auto overflow-x-hidden custom-scrollbar"></div>
+          </div>
+
+          <!-- Column: In Review -->
+          <div class="flex-1 flex flex-col min-w-0">
+            <div class="shrink-0 flex items-center justify-between mb-md">
+              <div class="flex items-center gap-2">
+                <h3 class="font-title-sm text-title-sm text-on-surface">In Review</h3>
+                <span id="count-in-review" class="bg-surface-container-high text-on-surface-variant px-2 py-0.5 rounded-full font-label-sm text-label-sm">0</span>
+              </div>
+              <button class="material-symbols-outlined text-outline">more_horiz</button>
+            </div>
+            <div id="col-in-review" class="flex-1 min-h-0 space-y-md p-2 bg-surface-container-low/50 rounded-xl overflow-y-auto overflow-x-hidden custom-scrollbar"></div>
+          </div>
+
+          <!-- Column: Done -->
+          <div class="flex-1 flex flex-col min-w-0">
+            <div class="shrink-0 flex items-center justify-between mb-md">
+              <div class="flex items-center gap-2">
+                <h3 class="font-title-sm text-title-sm text-on-surface">Done</h3>
+                <span id="count-done" class="bg-surface-container-high text-on-surface-variant px-2 py-0.5 rounded-full font-label-sm text-label-sm">0</span>
+              </div>
+              <button class="material-symbols-outlined text-outline">more_horiz</button>
+            </div>
+            <div id="col-done" class="flex-1 min-h-0 space-y-md p-2 bg-surface-container-low/50 rounded-xl overflow-y-auto overflow-x-hidden custom-scrollbar"></div>
+          </div>
+
         </div>
       </main>
     </div>

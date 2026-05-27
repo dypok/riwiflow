@@ -1,17 +1,11 @@
 import * as state from './state.js';
 import { loginUser, fetchUsers, fetchTasks } from './api.js';
-import { navigate } from './router.js';
+import { go } from './router.js';
 import { renderBoard } from './board.js';
 
 export function init() {
   const sessionRaw = localStorage.getItem('rw_session');
-  if (sessionRaw) {
-    state.setCurrentUser(JSON.parse(sessionRaw).user);
-    navigate('board');
-    loadBoard();
-  } else {
-    navigate('login');
-  }
+  if (sessionRaw) state.setCurrentUser(JSON.parse(sessionRaw).user);
 }
 
 export async function handleLoginSubmit(e) {
@@ -36,20 +30,16 @@ export async function login(email, password) {
   } catch {
     throw new Error('Cannot connect to the server. Run: npm run dev');
   }
-
   if (users.length === 0) throw new Error('Invalid email or password.');
-
   state.setCurrentUser(users[0]);
   localStorage.setItem('rw_session', JSON.stringify({ user: state.currentUser }));
-  navigate('board');
-  await loadBoard();
+  go('/board');
 }
 
 export async function loadBoard() {
   const isAdmin = state.currentUser.role === 'admin';
   document.getElementById('btn-new-task').classList.toggle('hidden', !isAdmin);
   document.getElementById('assignee-field').classList.toggle('hidden', !isAdmin);
-
   try {
     const [users, tasks] = await Promise.all([fetchUsers(), fetchTasks()]);
     state.setAllUsers(users);
@@ -68,5 +58,5 @@ export function logout() {
   state.setSearchQuery('');
   document.getElementById('email').value    = '';
   document.getElementById('password').value = '';
-  navigate('login');
+  go('/login');
 }

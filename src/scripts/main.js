@@ -1,14 +1,35 @@
-import { init, handleLoginSubmit, logout } from './auth.js';
+import { init, handleLoginSubmit, loadBoard, logout } from './auth.js';
+import { route, go, start, showView, openMobileSidebar, closeMobileSidebar } from './router.js';
+import { onDragStart, onDragEnd, onDragOver, onDragLeave, onDrop } from './dnd.js';
 import { handleSearch } from './board.js';
+import * as state from './state.js';
 import {
   openCreateModal, openEditModal, closeModal,
   openDeleteModal, closeDeleteModal,
   handleTaskSubmit, handleEscape, handleOverlayClick, confirmDelete,
 } from './modal.js';
 
+// Restaurar sesión antes de que el router resuelva
 init();
 
+route('/login', () => {
+  if (state.currentUser) { go('/board'); return; }
+  showView('login');
+});
+
+route('/board', async () => {
+  if (!state.currentUser) { go('/login'); return; }
+  showView('board');
+  await loadBoard();
+});
+
+start();
+
+// ── Event listeners ───────────────────────────────────────────────────────────
+
 document.getElementById('loginForm').addEventListener('submit', handleLoginSubmit);
+document.getElementById('btn-menu').addEventListener('click', openMobileSidebar);
+document.getElementById('mobile-overlay').addEventListener('click', closeMobileSidebar);
 document.getElementById('btn-new-task').addEventListener('click', openCreateModal);
 document.getElementById('btn-logout').addEventListener('click', logout);
 
@@ -31,3 +52,9 @@ document.getElementById('delete-modal').addEventListener('click', handleOverlayC
 document.addEventListener('keydown', handleEscape);
 
 document.getElementById('search-input').addEventListener('input', handleSearch);
+
+document.addEventListener('dragstart',  onDragStart);
+document.addEventListener('dragend',    onDragEnd);
+document.addEventListener('dragover',   onDragOver);
+document.addEventListener('dragleave',  onDragLeave);
+document.addEventListener('drop',       onDrop);

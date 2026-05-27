@@ -18,7 +18,7 @@ export function renderCard(task) {
   const inProg   = task.status === 'in-progress';
 
   return `
-    <div class="task-card bg-surface ${isDone ? 'opacity-80' : ''} ${inProg ? 'border-l-4 border-l-primary' : ''} border border-outline-variant rounded-xl p-md shadow-sm">
+    <div class="task-card bg-surface ${isDone ? 'opacity-80' : ''} ${inProg ? 'border-l-4 border-l-primary' : ''} border border-outline-variant rounded-xl p-md shadow-sm overflow-hidden cursor-grab" draggable="true" data-id="${task.id}">
       <div class="flex items-start justify-between mb-xs">
         <span class="${isDone ? 'bg-secondary-container text-secondary' : 'bg-primary-fixed text-on-primary-fixed-variant'} px-2 py-0.5 rounded-full font-label-sm text-label-sm">
           ${esc(assignee ? assignee.name : 'Unassigned')}
