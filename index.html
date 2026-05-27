@@ -7,102 +7,12 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
-    <script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              "secondary-fixed": "#e3e1ed",
-              tertiary: "#6b3000",
-              "surface-container-lowest": "#ffffff",
-              "on-primary-fixed-variant": "#5b00c5",
-              "on-tertiary-container": "#ffc19e",
-              "surface-container-low": "#f9f1ff",
-              secondary: "#5d5d67",
-              "on-secondary-container": "#64636d",
-              "inverse-on-surface": "#f6eefc",
-              "surface-dim": "#dfd7e5",
-              error: "#ba1a1a",
-              "secondary-fixed-dim": "#c7c5d1",
-              "on-primary-container": "#dac5ff",
-              "surface-variant": "#e8e0ee",
-              surface: "#fef7ff",
-              "inverse-primary": "#d3bbff",
-              "on-error": "#ffffff",
-              "surface-container-highest": "#e8e0ee",
-              "secondary-container": "#e3e1ed",
-              "on-primary-fixed": "#250059",
-              "on-secondary-fixed-variant": "#46464f",
-              "surface-container": "#f3ebf9",
-              "primary-container": "#6d28d9",
-              "outline-variant": "#ccc3d7",
-              "primary-fixed": "#ebddff",
-              "on-tertiary": "#ffffff",
-              "surface-container-high": "#ede5f3",
-              "surface-bright": "#fef7ff",
-              "primary-fixed-dim": "#d3bbff",
-              "on-primary": "#ffffff",
-              outline: "#7b7486",
-              "on-secondary": "#ffffff",
-              "on-tertiary-fixed-variant": "#743400",
-              background: "#fef7ff",
-              "tertiary-container": "#8f4200",
-              "on-secondary-fixed": "#1a1b23",
-              "error-container": "#ffdad6",
-              "on-background": "#1d1a24",
-              primary: "#5300b7",
-              "surface-tint": "#7331df",
-              "on-error-container": "#93000a",
-              "on-surface-variant": "#4a4455",
-              "tertiary-fixed-dim": "#ffb68b",
-              "on-surface": "#1d1a24",
-              "on-tertiary-fixed": "#321300",
-              "tertiary-fixed": "#ffdbc8",
-              "inverse-surface": "#332f39",
-            },
-            borderRadius: { DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem" },
-            spacing: { md: "16px", xxl: "48px", xl: "32px", xs: "4px", sm: "8px", gutter: "24px", lg: "24px", "margin-mobile": "16px" },
-            fontFamily: {
-              "display-lg-mobile": ["Inter"], "body-sm": ["Inter"], "label-sm": ["Inter"],
-              "title-sm": ["Inter"], "headline-md": ["Inter"], "display-lg": ["Inter"],
-              "body-md": ["Inter"], "label-md": ["Inter"],
-            },
-            fontSize: {
-              "display-lg-mobile": ["30px", { lineHeight: "38px", letterSpacing: "-0.02em", fontWeight: "600" }],
-              "body-sm":    ["14px", { lineHeight: "20px", fontWeight: "400" }],
-              "label-sm":   ["12px", { lineHeight: "16px", letterSpacing: "0.05em", fontWeight: "600" }],
-              "title-sm":   ["18px", { lineHeight: "28px", fontWeight: "500" }],
-              "headline-md":["24px", { lineHeight: "32px", letterSpacing: "-0.01em", fontWeight: "600" }],
-              "display-lg": ["36px", { lineHeight: "44px", letterSpacing: "-0.02em", fontWeight: "600" }],
-              "body-md":    ["16px", { lineHeight: "24px", fontWeight: "400" }],
-              "label-md":   ["14px", { lineHeight: "20px", fontWeight: "500" }],
-            },
-          },
-        },
-      };
-    </script>
-    <style>
-      body { font-family: "Inter", sans-serif; }
-      .material-symbols-outlined {
-        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
-        display: inline-block; vertical-align: middle; line-height: 1;
-      }
-      .kanban-column { min-width: 280px; }
-      .custom-scrollbar::-webkit-scrollbar { width: 6px; }
-      .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-      .custom-scrollbar::-webkit-scrollbar-thumb { background: #ccc3d7; border-radius: 10px; }
-      .task-card:hover { transform: translateY(-2px); transition: all 0.2s ease; }
-      .input-focus-ring:focus { outline: none; border-color: #5300b7; box-shadow: 0 0 0 2px #ebddff; }
-      .modal-overlay { backdrop-filter: blur(4px); }
-    </style>
+    <link rel="stylesheet" href="src/styles/index.css">
+    <script src="src/scripts/tailwind.js"></script>
   </head>
   <body>
 
-    <!-- ═══════════════════════════════════════════════════════════════
-         VIEW: LOGIN
-         Diseño original de login.html del repositorio
-    ═══════════════════════════════════════════════════════════════ -->
+    <!-- VIEW: LOGIN -->
     <div id="view-login" class="bg-surface-container-lowest text-on-surface min-h-screen flex flex-col">
       <main class="flex-grow flex items-center justify-center px-gutter py-xxl">
         <div class="w-full max-w-[440px] space-y-xl">
@@ -189,10 +99,7 @@
     </div>
 
 
-    <!-- ═══════════════════════════════════════════════════════════════
-         VIEW: BOARD
-         Diseño original de board.html del repositorio
-    ═══════════════════════════════════════════════════════════════ -->
+    <!-- VIEW: BOARD -->
     <div id="view-board" class="hidden bg-background text-on-background overflow-hidden h-screen flex">
 
       <!-- SideNavBar -->
@@ -227,13 +134,12 @@
           <button
             id="btn-new-task"
             class="hidden w-full bg-primary text-on-primary py-3 rounded-xl font-label-md text-label-md flex items-center justify-center gap-2 shadow-sm hover:opacity-90 transition-opacity"
-            onclick="openCreateModal()"
           >
             <span class="material-symbols-outlined">add</span>
             New Task
           </button>
           <button
-            onclick="logout()"
+            id="btn-logout"
             class="mt-sm w-full border border-outline-variant text-on-surface-variant py-2 rounded-xl font-label-md text-label-md flex items-center justify-center gap-2 hover:bg-surface-container transition-colors"
           >
             <span class="material-symbols-outlined text-sm">logout</span>
@@ -325,14 +231,12 @@
     </div>
 
 
-    <!-- ═══════════════════════════════════════════════════════════════
-         MODAL: Crear / Editar tarea
-    ═══════════════════════════════════════════════════════════════ -->
+    <!-- MODAL: Crear / Editar tarea -->
     <div id="task-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center modal-overlay bg-black/30">
       <div class="bg-surface rounded-xl border border-outline-variant shadow-xl w-full max-w-md mx-4 p-xl space-y-lg">
         <div class="flex items-center justify-between">
           <h2 id="modal-title" class="font-headline-md text-headline-md text-on-surface">New Task</h2>
-          <button onclick="closeModal()" class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container p-1 rounded-lg">close</button>
+          <button id="btn-close-modal" class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container p-1 rounded-lg">close</button>
         </div>
         <div id="modal-error" class="hidden bg-error-container text-on-error-container text-body-sm px-md py-sm rounded-lg"></div>
         <form id="task-form" class="space-y-lg">
@@ -363,7 +267,7 @@
               class="w-full px-md py-md bg-white border border-outline-variant rounded-lg font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/30"></select>
           </div>
           <div class="flex gap-sm pt-sm">
-            <button type="button" onclick="closeModal()"
+            <button id="btn-cancel-task" type="button"
               class="flex-1 border border-outline-variant text-on-surface font-label-md text-label-md py-md rounded-lg hover:bg-surface-container transition-colors">Cancel</button>
             <button id="modal-submit" type="submit"
               class="flex-1 bg-primary text-on-primary font-label-md text-label-md py-md rounded-lg hover:opacity-90 transition-opacity">Save</button>
@@ -379,296 +283,15 @@
         <p class="font-body-md text-body-md text-on-surface-variant">Are you sure? This cannot be undone.</p>
         <input type="hidden" id="delete-task-id" />
         <div class="flex gap-sm">
-          <button onclick="closeDeleteModal()"
+          <button id="btn-delete-cancel"
             class="flex-1 border border-outline-variant text-on-surface font-label-md text-label-md py-md rounded-lg hover:bg-surface-container transition-colors">Cancel</button>
-          <button onclick="confirmDelete()"
+          <button id="btn-delete-confirm"
             class="flex-1 bg-error text-on-error font-label-md text-label-md py-md rounded-lg hover:opacity-90 transition-opacity">Delete</button>
         </div>
       </div>
     </div>
 
 
-    <!-- ═══════════════════════════════════════════════════════════════
-         JAVASCRIPT
-    ═══════════════════════════════════════════════════════════════ -->
-    <script>
-      const API = 'http://localhost:3001';
-
-      let currentUser = null;
-      let allUsers    = [];
-      let allTasks    = [];
-      let searchQuery = '';
-
-      // ── Router ────────────────────────────────────────────────────────────────
-      // Muestra una vista y oculta la otra SIN recargar la página.
-      function navigate(view) {
-        document.getElementById('view-login').classList.toggle('hidden', view !== 'login');
-        document.getElementById('view-board').classList.toggle('hidden', view !== 'board');
-      }
-
-      // ── Arranque ──────────────────────────────────────────────────────────────
-      // Al cargar la página, revisamos si ya hay sesión activa.
-      (function init() {
-        const sessionRaw = localStorage.getItem('rw_session');
-        if (sessionRaw) {
-          currentUser = JSON.parse(sessionRaw).user;
-          navigate('board');
-          loadBoard();
-        } else {
-          navigate('login');
-        }
-      })();
-
-      // ── LOGIN ─────────────────────────────────────────────────────────────────
-      document.getElementById('loginForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const errorEl = document.getElementById('login-error');
-        errorEl.classList.add('hidden');
-
-        const email    = document.getElementById('email').value.trim();
-        const password = document.getElementById('password').value;
-
-        try {
-          const res   = await fetch(`${API}/users?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`);
-          const users = await res.json();
-
-          if (users.length === 0) {
-            errorEl.textContent = 'Invalid email or password.';
-            errorEl.classList.remove('hidden');
-            return;
-          }
-
-          currentUser = users[0];
-          localStorage.setItem('rw_session', JSON.stringify({ user: currentUser }));
-
-          // Navegar al board sin recargar la página
-          navigate('board');
-          loadBoard();
-        } catch {
-          errorEl.textContent = 'Cannot connect to the server. Run: npm run dev';
-          errorEl.classList.remove('hidden');
-        }
-      });
-
-      // ── BOARD: cargar datos ───────────────────────────────────────────────────
-      async function loadBoard() {
-        const isAdmin = currentUser.role === 'admin';
-
-        // Mostrar/ocultar botón de nueva tarea y campo de asignación según rol
-        document.getElementById('btn-new-task').classList.toggle('hidden', !isAdmin);
-        document.getElementById('assignee-field').classList.toggle('hidden', !isAdmin);
-
-        try {
-          [allUsers, allTasks] = await Promise.all([
-            fetch(`${API}/users`).then(r => r.json()),
-            fetch(`${API}/tasks`).then(r => r.json()),
-          ]);
-          renderBoard();
-        } catch {
-          alert('Cannot connect to json-server. Run: npm run dev');
-        }
-      }
-
-      // ── BOARD: renderizar ─────────────────────────────────────────────────────
-      const COLUMNS = ['todo', 'in-progress', 'in-review', 'done'];
-
-      function renderBoard() {
-        const q = searchQuery.toLowerCase();
-
-        COLUMNS.forEach(status => {
-          let tasks = allTasks.filter(t => t.status === status);
-          if (q) tasks = tasks.filter(t =>
-            t.title.toLowerCase().includes(q) || t.description.toLowerCase().includes(q)
-          );
-
-          document.getElementById(`count-${status}`).textContent = tasks.length;
-
-          const col = document.getElementById(`col-${status}`);
-          col.innerHTML = tasks.length
-            ? tasks.map(renderCard).join('')
-            : '<div class="text-center text-on-surface-variant text-body-sm py-8">No tasks</div>';
-        });
-      }
-
-      function renderCard(task) {
-        const assignee = allUsers.find(u => u.id === task.userId);
-        const canEdit  = currentUser.role === 'admin' || task.userId === currentUser.id;
-        const isAdmin  = currentUser.role === 'admin';
-        const isDone   = task.status === 'done';
-        const inProg   = task.status === 'in-progress';
-
-        return `
-          <div class="task-card bg-surface ${isDone ? 'opacity-80' : ''} ${inProg ? 'border-l-4 border-l-primary' : ''} border border-outline-variant rounded-xl p-md shadow-sm">
-            <div class="flex items-start justify-between mb-xs">
-              <span class="${isDone ? 'bg-secondary-container text-secondary' : 'bg-primary-fixed text-on-primary-fixed-variant'} px-2 py-0.5 rounded-full font-label-sm text-label-sm">
-                ${esc(assignee ? assignee.name : 'Unassigned')}
-              </span>
-              ${isDone ? `<span class="material-symbols-outlined text-sm" style="font-variation-settings:'FILL' 1;color:#8f4200">check_circle</span>` : ''}
-              ${inProg ? `<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings:'FILL' 1">star</span>` : ''}
-            </div>
-            <h4 class="font-label-md text-label-md text-on-surface mb-xs ${isDone ? 'line-through' : ''}">${esc(task.title)}</h4>
-            <p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">${esc(task.description)}</p>
-            <div class="mt-md flex items-center justify-between">
-              <div class="flex -space-x-1">
-                <div class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center text-xs font-bold border-2 border-surface">
-                  ${assignee ? assignee.name.split(' ').map(w => w[0]).join('').toUpperCase().slice(0,2) : '?'}
-                </div>
-              </div>
-              <div class="flex items-center gap-1">
-                ${canEdit ? `<button onclick="openEditModal(${task.id})" class="text-primary font-label-sm text-label-sm hover:underline flex items-center gap-1"><span class="material-symbols-outlined text-sm">edit</span></button>` : ''}
-                ${isAdmin ? `<button onclick="openDeleteModal(${task.id})" class="text-error font-label-sm text-label-sm hover:underline flex items-center gap-1 ml-1"><span class="material-symbols-outlined text-sm">delete</span></button>` : ''}
-              </div>
-            </div>
-          </div>`;
-      }
-
-      function esc(str) {
-        const d = document.createElement('div');
-        d.appendChild(document.createTextNode(str || ''));
-        return d.innerHTML;
-      }
-
-      // ── Búsqueda ──────────────────────────────────────────────────────────────
-      document.getElementById('search-input').addEventListener('input', e => {
-        searchQuery = e.target.value;
-        renderBoard();
-      });
-
-      // ── MODAL: Crear tarea ────────────────────────────────────────────────────
-      function openCreateModal() {
-        document.getElementById('modal-title').textContent    = 'New Task';
-        document.getElementById('modal-submit').textContent   = 'Create Task';
-        document.getElementById('task-id').value              = '';
-        document.getElementById('task-title').value           = '';
-        document.getElementById('task-title').disabled        = false;
-        document.getElementById('task-desc').value            = '';
-        document.getElementById('task-status').value          = 'todo';
-        document.getElementById('modal-error').classList.add('hidden');
-        populateUserSelect(currentUser.id);
-        document.getElementById('task-modal').classList.remove('hidden');
-      }
-
-      // ── MODAL: Editar tarea ───────────────────────────────────────────────────
-      function openEditModal(taskId) {
-        const task = allTasks.find(t => t.id === taskId);
-        if (!task) return;
-
-        document.getElementById('modal-title').textContent    = 'Edit Task';
-        document.getElementById('modal-submit').textContent   = 'Save Changes';
-        document.getElementById('task-id').value              = task.id;
-        document.getElementById('task-title').value           = task.title;
-        document.getElementById('task-title').disabled        = currentUser.role !== 'admin';
-        document.getElementById('task-desc').value            = task.description;
-        document.getElementById('task-status').value          = task.status;
-        document.getElementById('modal-error').classList.add('hidden');
-        populateUserSelect(task.userId);
-        document.getElementById('task-modal').classList.remove('hidden');
-      }
-
-      function closeModal() {
-        document.getElementById('task-modal').classList.add('hidden');
-        document.getElementById('task-title').disabled = false;
-      }
-
-      function populateUserSelect(selectedId) {
-        document.getElementById('task-user').innerHTML = allUsers.map(u =>
-          `<option value="${u.id}" ${u.id === selectedId ? 'selected' : ''}>${esc(u.name)} (${u.role})</option>`
-        ).join('');
-      }
-
-      // ── CRUD: Guardar tarea ───────────────────────────────────────────────────
-      document.getElementById('task-form').addEventListener('submit', async e => {
-        e.preventDefault();
-        document.getElementById('modal-error').classList.add('hidden');
-
-        const id     = document.getElementById('task-id').value;
-        const title  = document.getElementById('task-title').value.trim();
-        const desc   = document.getElementById('task-desc').value.trim();
-        const status = document.getElementById('task-status').value;
-        const userId = currentUser.role === 'admin'
-          ? parseInt(document.getElementById('task-user').value)
-          : currentUser.id;
-
-        if (!title) { showModalError('Title is required.'); return; }
-
-        try {
-          if (id) {
-            const task = allTasks.find(t => t.id === parseInt(id));
-            if (currentUser.role !== 'admin' && task.userId !== currentUser.id) {
-              showModalError('You can only edit your own tasks.');
-              return;
-            }
-            const body = currentUser.role === 'admin'
-              ? { title, description: desc, status, userId }
-              : { description: desc, status };
-
-            const updated = await fetch(`${API}/tasks/${id}`, {
-              method: 'PATCH',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(body),
-            }).then(r => r.json());
-
-            allTasks = allTasks.map(t => t.id === updated.id ? updated : t);
-          } else {
-            const created = await fetch(`${API}/tasks`, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ title, description: desc, status, userId }),
-            }).then(r => r.json());
-
-            allTasks.push(created);
-          }
-          closeModal();
-          renderBoard();
-        } catch {
-          showModalError('Failed to save. Check server connection.');
-        }
-      });
-
-      function showModalError(msg) {
-        const el = document.getElementById('modal-error');
-        el.textContent = msg;
-        el.classList.remove('hidden');
-      }
-
-      // ── CRUD: Eliminar tarea ──────────────────────────────────────────────────
-      function openDeleteModal(taskId) {
-        document.getElementById('delete-task-id').value = taskId;
-        document.getElementById('delete-modal').classList.remove('hidden');
-      }
-
-      function closeDeleteModal() {
-        document.getElementById('delete-modal').classList.add('hidden');
-      }
-
-      async function confirmDelete() {
-        const id = parseInt(document.getElementById('delete-task-id').value);
-        try {
-          await fetch(`${API}/tasks/${id}`, { method: 'DELETE' });
-          allTasks = allTasks.filter(t => t.id !== id);
-          closeDeleteModal();
-          renderBoard();
-        } catch {
-          alert('Failed to delete.');
-        }
-      }
-
-      // ── Logout ────────────────────────────────────────────────────────────────
-      function logout() {
-        localStorage.removeItem('rw_session');
-        currentUser = null;
-        allUsers    = [];
-        allTasks    = [];
-        searchQuery = '';
-        document.getElementById('email').value    = '';
-        document.getElementById('password').value = '';
-        navigate('login');
-      }
-
-      // ── Cerrar modales con Escape o clic en overlay ───────────────────────────
-      document.getElementById('task-modal').addEventListener('click',   e => { if (e.target === e.currentTarget) closeModal(); });
-      document.getElementById('delete-modal').addEventListener('click', e => { if (e.target === e.currentTarget) closeDeleteModal(); });
-      document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); closeDeleteModal(); } });
-    </script>
+    <script type="module" src="src/scripts/main.js"></script>
   </body>
 </html>

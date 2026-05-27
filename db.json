@@ -20,7 +20,7 @@
       "id": 1,
       "title": "User Flow Mapping",
       "description": "Define the end-to-end journey for the new onboarding experience.",
-      "status": "todo",
+      "status": "in-review",
       "userId": 2
     },
     {
@@ -68,7 +68,7 @@
     {
       "title": "Pa saber",
       "description": "esto solo es una demo",
-      "status": "in-progress",
+      "status": "done",
       "userId": 2,
       "id": 9
     }
