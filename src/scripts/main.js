@@ -1,5 +1,5 @@
 import { init, handleLoginSubmit, loadBoard, logout } from './auth.js';
-import { route, go, start, showView, openMobileSidebar, closeMobileSidebar } from './router.js';
+import { route, go, start, showView, showSubView, openMobileSidebar, closeMobileSidebar } from './router.js';
 import { onDragStart, onDragEnd, onDragOver, onDragLeave, onDrop } from './dnd.js';
 import { handleSearch } from './board.js';
 import * as state from './state.js';
@@ -8,9 +8,11 @@ import {
   openDeleteModal, closeDeleteModal,
   handleTaskSubmit, handleEscape, handleOverlayClick, confirmDelete,
 } from './modal.js';
+import { loadUsersView, initUsersEvents } from './users.js';
 
 // Restaurar sesión antes de que el router resuelva
 init();
+initUsersEvents();
 
 route('/login', () => {
   if (state.currentUser) { go('/board'); return; }
@@ -20,7 +22,15 @@ route('/login', () => {
 route('/board', async () => {
   if (!state.currentUser) { go('/login'); return; }
   showView('board');
+  showSubView('board');
   await loadBoard();
+});
+
+route('/users', async () => {
+  if (!state.currentUser) { go('/login'); return; }
+  showView('board');
+  showSubView('users');
+  await loadUsersView();
 });
 
 start();

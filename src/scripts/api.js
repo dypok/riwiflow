@@ -1,4 +1,4 @@
-const API = 'http://localhost:3001';
+const API = window.location.origin;
 
 export async function loginUser(email, password) {
   const res = await fetch(`${API}/users?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`);
@@ -36,3 +36,26 @@ export async function updateTask(id, data) {
 export async function deleteTask(id) {
   await fetch(`${API}/tasks/${id}`, { method: 'DELETE' });
 }
+
+export async function createUser(data) {
+  const res = await fetch(`${API}/users`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  });
+  return res.json();
+}
+
+export async function updateUser(id, data) {
+  const res = await fetch(`${API}/users/${id}`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  });
+  return res.json();
+}
+
+export async function deleteUser(id) {
+  await fetch(`${API}/users/${id}`, { method: 'DELETE' });
+}
+
